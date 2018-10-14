@@ -13,7 +13,7 @@ public class BankAccount {
   public BankAccount(int accountNum, int routingNum, double accountBal){
     accountNumber = accountNum;
     routingNumber = routingNum;
-    accountBalance = 0;
+    accountBalance = accountBal;
   }
 
   public int getAccountNumber() {

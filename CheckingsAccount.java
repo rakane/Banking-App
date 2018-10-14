@@ -1,5 +1,7 @@
 public class CheckingsAccount extends BankAccount {
 
+  private static String type = "Checking";
+
   public CheckingsAccount() {
     super();
   }

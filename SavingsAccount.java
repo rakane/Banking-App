@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class SavingsAccount extends BankAccount{
 
+  private static String type = "Saving";
   private static double interestRate = 0.2;
 
   public SavingsAccount() {
