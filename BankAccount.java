@@ -3,6 +3,7 @@ public class BankAccount {
   protected int accountNumber;
   protected int routingNumber;
   protected double accountBalance;
+  private String type;
 
   public BankAccount(){
     accountNumber = 0000000;
@@ -26,6 +27,10 @@ public class BankAccount {
 
   public double getAccountBalance() {
     return accountBalance;
+  }
+
+  public String getType() {
+    return type;
   }
 
   public void deposit(int amount) {

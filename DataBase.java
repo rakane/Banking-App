@@ -1,11 +1,13 @@
-import java.io.*;
+import java.io.File;
+import java.io.PrintWriter;
+import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class DataBase {
 
-  File inputFile = new File("database.txt");
-  File outputFile = new File("tempdatabase.txt");
+  File inputFile = new File("sample-database.txt");
   ArrayList<User> users = new ArrayList<User>();
   String username;
   String password;
@@ -39,8 +41,11 @@ public class DataBase {
         users.get(users.size() - 1).addAccount(new SavingsAccount(accountNum, routingNum, balance));
       }
     }
-
     reader.close();
+  }
+
+  public ArrayList<User> getUsers() {
+    return users;
   }
 
   public void printDataBase() {
@@ -48,6 +53,32 @@ public class DataBase {
       System.out.println(users.get(i).getUserName());
       users.get(i).printAccounts();
     }
+  }
+
+  public void updateDataBase() throws FileNotFoundException {
+    PrintWriter pw = new PrintWriter(new FileOutputStream("tempdatabase.txt", false));
+
+    for(int i = 0; i < users.size(); i++) {
+      for(int j = 0; j < users.get(i).getAccounts().size(); j++) {
+        pw.print(users.get(i).getUserName() + "\t\t"
+          + users.get(i).getPassword() + "\t\t");
+        pw.println(users.get(i).getAccounts().get(j).getType() + "\t\t\t"
+          + users.get(i).getAccounts().get(j).getAccountNumber() + "\t\t"
+          + users.get(i).getAccounts().get(j).getRoutingNumber() + "\t\t"
+          + users.get(i).getAccounts().get(j).getAccountBalance());
+      }
+    }
+    pw.close();
+  }
+
+  public boolean verifyLogin(String user, String pass) {
+    for(int i = 0; i < users.size(); i++) {
+      if(users.get(i).getUserName().equalsIgnoreCase(user)
+      & users.get(i).getPassword().equals(pass)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public static boolean alreadyExists(ArrayList<User> db, String name) {
@@ -60,6 +91,4 @@ public class DataBase {
     }
     return exists;
   }
-
-
 }

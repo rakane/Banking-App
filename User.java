@@ -7,11 +7,19 @@ public class User {
 
   public User(String usr, String pass) {
     username = usr;
-    password = password;
+    password = pass;
   }
 
   public String getUserName() {
     return username;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public ArrayList<BankAccount> getAccounts() {
+    return accounts;
   }
 
   public void addAccount(BankAccount act) {

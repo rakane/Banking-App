@@ -10,4 +10,8 @@ public class CheckingsAccount extends BankAccount {
     super(accountNum, routingNum, accountBal);
   }
 
+  public String getType() {
+    return type;
+  }
+
 }

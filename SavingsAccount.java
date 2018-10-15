@@ -14,4 +14,8 @@ public class SavingsAccount extends BankAccount{
     super(accountNum, routingNum, accountBal);
   }
 
+  public String getType() {
+    return type;
+  }
+
 }
