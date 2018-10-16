@@ -1,3 +1,9 @@
+/**
+ * File: Main.java
+ * @author: Ryan Kane
+ * @email: rakane@syr.edu
+ **/
+
 import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -27,7 +33,14 @@ public class Main {
     sc.close();
   }
 
-
+  /**
+  *  Opens the users home menu
+  *  @param d
+  *   database of users
+  *  @param u
+  *   the login user
+  *  @return updated users list
+  **/
   public static ArrayList<User> homeMenu (DataBase d, User u) {
     Scanner sc = new Scanner(System.in);
     int input;
@@ -61,6 +74,16 @@ public class Main {
     }
   }
 
+  /**
+  *  Opens the users deposit menu
+  *  @param d
+  *   database of users
+  *  @param u
+  *   the login user
+  *  @param s
+  *   scanner to get user input
+  *  @return updated users list
+  **/
   public static ArrayList<User> depositMenu(DataBase d, User u, Scanner s) {
     String input1;
     double input2;
@@ -85,6 +108,16 @@ public class Main {
     return d.getUsers();
   }
 
+  /**
+  *  Opens the users withdraw menu
+  *  @param d
+  *   database of users
+  *  @param u
+  *   the login user
+  *  @param s
+  *   scanner to get user input
+  *  @return updated users list
+  **/
   public static ArrayList<User> withdrawMenu(DataBase d, User u, Scanner s) {
     String input1;
     double input2;
@@ -109,6 +142,16 @@ public class Main {
     return d.getUsers();
   }
 
+  /**
+  *  Opens the users add account menu
+  *  @param d
+  *   database of users
+  *  @param u
+  *   the login user
+  *  @param s
+  *   scanner to get user input
+  *  @return updated users list
+  **/
   public static ArrayList<User> addAccountMenu(DataBase d, User u, Scanner s) {
     String input1;
     System.out.print("Enter Checking or Saving to add respective account: ");
@@ -135,6 +178,16 @@ public class Main {
     return d.getUsers();
   }
 
+  /**
+  *  Opens the users delete account menu
+  *  @param d
+  *   database of users
+  *  @param u
+  *   the login user
+  *  @param s
+  *   scanner to get user input
+  *  @return updated users list
+  **/
   public static ArrayList<User> deleteAccountMenu(DataBase d, User u, Scanner s) {
     String input1;
     int input2;
