@@ -1,7 +1,7 @@
 # Banking-App
 
 ## Overview
-This is a banking program written in java, it stores user accounts in __database.txt__ and outputs the updated database to __tempdatabase.txt__
+This is a banking program written in java with Atom, it stores user accounts in __database.txt__ and outputs the updated database to __tempdatabase.txt__
 until the programs basic functionality and bug fixes are complete. Then it will
 be updated to overwrite __database.txt__
 
