@@ -137,12 +137,24 @@ public class Main {
 
   public static ArrayList<User> deleteAccountMenu(DataBase d, User u, Scanner s) {
     String input1;
-    String input2;
+    int input2;
     System.out.print("Enter Checking or Saving to delete respective account: ");
     input1 = s.next();
     System.out.print("Enter account number to confirm: ");
-    input2 = s.next();
+    input2 = s.nextInt();
 
+    for(int i = 0; i < d.getUsers().size(); i++){
+      if(d.getUsers().get(i).getUserName().equalsIgnoreCase(u.getUserName())) {
+        for(int j = d.getUsers().get(i).getAccounts().size() - 1; j >= 0; j--) {
+          if(d.getUsers().get(i).getAccounts().get(j).getType().equals(input1) &
+          d.getUsers().get(i).getAccounts().get(j).getAccountNumber() == input2) {
+            d.getUsers().get(i).getAccounts().remove(j);
+            return d.getUsers();
+          }
+        }
+      }
+    }
+    System.out.println("Can't find account");
     s.close();
     return d.getUsers();
   }

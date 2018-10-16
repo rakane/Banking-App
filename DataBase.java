@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class DataBase {
 
-  File inputFile = new File("sample-database.txt");
+  File inputFile = new File("database.txt");
   ArrayList<User> users = new ArrayList<User>();
   String username;
   String password;
