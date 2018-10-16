@@ -1,0 +1,4 @@
+Exclude first line, just as reference for what the data is
+username    password    AccountType    7DigitAccountNum   7DigitRoutingNum   balance
+admin       pass        Checking       0101011            1111111            10.00
+admin       pass        Savings        2201033            9999999            909.45
