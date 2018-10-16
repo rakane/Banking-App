@@ -11,7 +11,7 @@ public class DataBase {
   ArrayList<User> users = new ArrayList<User>();
   String username;
   String password;
-  int accountType;
+  String accountType;
   int accountNum;
   int routingNum;
   double balance;
@@ -28,13 +28,13 @@ public class DataBase {
         users.add(new User(username, password));
       }
 
-      accountType = reader.nextInt();
+      accountType = reader.next();
       accountNum = reader.nextInt();
       routingNum = reader.nextInt();
       balance = reader.nextDouble();
       reader.nextLine();
 
-      if(accountType == 0) {
+      if(accountType.equals("Checking")) {
         users.get(users.size() - 1).addAccount(new CheckingsAccount(accountNum, routingNum, balance));
       }
       else {
@@ -44,6 +44,9 @@ public class DataBase {
     reader.close();
   }
 
+  public void setDataBase(ArrayList<User> u) {
+    users = u;
+  }
   public ArrayList<User> getUsers() {
     return users;
   }
@@ -62,10 +65,18 @@ public class DataBase {
       for(int j = 0; j < users.get(i).getAccounts().size(); j++) {
         pw.print(users.get(i).getUserName() + "\t\t"
           + users.get(i).getPassword() + "\t\t");
-        pw.println(users.get(i).getAccounts().get(j).getType() + "\t\t\t"
-          + users.get(i).getAccounts().get(j).getAccountNumber() + "\t\t"
-          + users.get(i).getAccounts().get(j).getRoutingNumber() + "\t\t"
-          + users.get(i).getAccounts().get(j).getAccountBalance());
+        if(users.get(i).getAccounts().get(j).getType().equals("Checking")) {
+          pw.println(users.get(i).getAccounts().get(j).getType() + "\t\t"
+            + users.get(i).getAccounts().get(j).getAccountNumber() + "\t\t"
+            + users.get(i).getAccounts().get(j).getRoutingNumber() + "\t\t"
+            + users.get(i).getAccounts().get(j).getAccountBalance());
+        }
+        else{
+          pw.println(users.get(i).getAccounts().get(j).getType() + "\t\t\t"
+            + users.get(i).getAccounts().get(j).getAccountNumber() + "\t\t"
+            + users.get(i).getAccounts().get(j).getRoutingNumber() + "\t\t"
+            + users.get(i).getAccounts().get(j).getAccountBalance());
+        }
       }
     }
     pw.close();
@@ -79,6 +90,15 @@ public class DataBase {
       }
     }
     return false;
+  }
+
+  public User getUser(String name) {
+    for(int i = 0; i < users.size(); i++) {
+      if(name.equalsIgnoreCase(users.get(i).getUserName())) {
+        return users.get(i);
+      }
+    }
+    return null;
   }
 
   public static boolean alreadyExists(ArrayList<User> db, String name) {

@@ -27,9 +27,17 @@ public class User {
   }
 
   public void printAccounts() {
+    System.out.println("\t\t\tAccounts\n\t\t\t-------");
     for(int i = 0; i < accounts.size(); i++) {
-      System.out.println(accounts.get(i).getAccountNumber() + " " +
-        accounts.get(i).getAccountBalance());
+      if(accounts.get(i).getType().equals("Checking")){
+        System.out.println("Checking:\tAccount Number: " + accounts.get(i).getAccountNumber() +
+        "\t\tBalance: " + accounts.get(i).getAccountBalance());
+      }
+      else{
+        System.out.println("Savings:\tAccount Number: " + accounts.get(i).getAccountNumber() +
+        "\t\tBalance: " + accounts.get(i).getAccountBalance());
+      }
+      System.out.println();
     }
   }
 }

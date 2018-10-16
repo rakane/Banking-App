@@ -33,7 +33,7 @@ public class BankAccount {
     return type;
   }
 
-  public void deposit(int amount) {
+  public void deposit(double amount) {
     if(amount <= 0) {
       System.out.println("Cannot deposit $" + amount);
     }
