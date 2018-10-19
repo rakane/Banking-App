@@ -127,6 +127,11 @@ public class Main {
     double input2;
     System.out.print("Enter Checking or Savings to withdraw from respective account: ");
     input1 = s.next();
+    while((!input1.equalsIgnoreCase("Savings")) & (!input1.equalsIgnoreCase("Checking"))) {
+      System.out.print("\nInvalid input, Please try again: ");
+      input1 = s.next();
+    }
+
     System.out.print("Enter amount to withdraw: ");
     input2 = s.nextDouble();
 
