@@ -208,13 +208,18 @@ public class Main {
     int input2;
     System.out.print("Enter Checking or Savings to delete respective account: ");
     input1 = s.next();
+    while((!input1.equalsIgnoreCase("Savings")) & (!input1.equalsIgnoreCase("Checking"))) {
+      System.out.print("\nInvalid input, Please try again: ");
+      input1 = s.next();
+    }
+
     System.out.print("Enter account number to confirm: ");
     input2 = s.nextInt();
 
     for(int i = 0; i < d.getUsers().size(); i++){
       if(d.getUsers().get(i).getUserName().equalsIgnoreCase(u.getUserName())) {
         for(int j = d.getUsers().get(i).getAccounts().size() - 1; j >= 0; j--) {
-          if(d.getUsers().get(i).getAccounts().get(j).getType().equals(input1) &
+          if(d.getUsers().get(i).getAccounts().get(j).getType().equalsIgnoreCase(input1) &
           d.getUsers().get(i).getAccounts().get(j).getAccountNumber() == input2) {
             d.getUsers().get(i).getAccounts().remove(j);
             return d.getUsers();
