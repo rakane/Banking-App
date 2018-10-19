@@ -165,20 +165,26 @@ public class Main {
     String input1;
     System.out.print("Enter Checking or Savings to add respective account: ");
     input1 = s.next();
+    while((!input1.equalsIgnoreCase("Savings")) & (!input1.equalsIgnoreCase("Checking"))) {
+      System.out.print("\nInvalid input, Please try again: ");
+      input1 = s.next();
+    }
 
     for(int i = 0; i < d.getUsers().size(); i++){
       if(d.getUsers().get(i).getUserName().equalsIgnoreCase(u.getUserName())) {
         for(int j = 0; j < d.getUsers().get(i).getAccounts().size(); j++) {
-          if(d.getUsers().get(i).getAccounts().get(j).getType().equals(input1)) {
+          if(d.getUsers().get(i).getAccounts().get(j).getType().equalsIgnoreCase(input1)) {
             System.out.println("Already have " + input1 + " account");
             return d.getUsers();
           }
         }
-        if(input1.equals("Checking")) {
+        if(input1.equalsIgnoreCase("Checking")) {
           d.getUsers().get(i).addAccount(new CheckingsAccount());
+          System.out.println("\nNew Checking Account added");
         }
-        else {
+        if(input1.equalsIgnoreCase("Saving")) {
           d.getUsers().get(i).addAccount(new SavingsAccount());
+          System.out.println("\nNew Savings Account added");
         }
       }
     }
