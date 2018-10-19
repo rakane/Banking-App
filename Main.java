@@ -25,9 +25,9 @@ public class Main {
       System.out.print("Enter password: ");
       pass = sc.next();
     }
+
     User user = db.getUser(usrname);
     db.setDataBase(homeMenu(db, user));
-
 
     db.updateDataBase();
     sc.close();
@@ -87,15 +87,19 @@ public class Main {
   public static ArrayList<User> depositMenu(DataBase d, User u, Scanner s) {
     String input1;
     double input2;
-    System.out.print("Enter Checking or Saving to deposit into respective account: ");
+    System.out.print("Enter Checking or Savings to deposit into respective account: ");
     input1 = s.next();
+    while((!input1.equalsIgnoreCase("Savings")) & (!input1.equalsIgnoreCase("Checking"))) {
+      System.out.print("\nInvalid input, Please try again: ");
+      input1 = s.next();
+    }
     System.out.print("Enter amount to deposit: ");
     input2 = s.nextDouble();
 
     for(int i = 0; i < d.getUsers().size(); i++){
       if(d.getUsers().get(i).getUserName().equalsIgnoreCase(u.getUserName())) {
         for(int j = 0; j < d.getUsers().get(i).getAccounts().size(); j++) {
-          if(d.getUsers().get(i).getAccounts().get(j).getType().equals(input1)) {
+          if(d.getUsers().get(i).getAccounts().get(j).getType().equalsIgnoreCase(input1)) {
             while(d.getUsers().get(i).getAccounts().get(j).deposit(input2) == false) {
               System.out.print("Enter amount to deposit: ");
               input2 = s.nextDouble();
@@ -121,7 +125,7 @@ public class Main {
   public static ArrayList<User> withdrawMenu(DataBase d, User u, Scanner s) {
     String input1;
     double input2;
-    System.out.print("Enter Checking or Saving to withdraw from respective account: ");
+    System.out.print("Enter Checking or Savings to withdraw from respective account: ");
     input1 = s.next();
     System.out.print("Enter amount to withdraw: ");
     input2 = s.nextDouble();
@@ -154,7 +158,7 @@ public class Main {
   **/
   public static ArrayList<User> addAccountMenu(DataBase d, User u, Scanner s) {
     String input1;
-    System.out.print("Enter Checking or Saving to add respective account: ");
+    System.out.print("Enter Checking or Savings to add respective account: ");
     input1 = s.next();
 
     for(int i = 0; i < d.getUsers().size(); i++){
@@ -191,7 +195,7 @@ public class Main {
   public static ArrayList<User> deleteAccountMenu(DataBase d, User u, Scanner s) {
     String input1;
     int input2;
-    System.out.print("Enter Checking or Saving to delete respective account: ");
+    System.out.print("Enter Checking or Savings to delete respective account: ");
     input1 = s.next();
     System.out.print("Enter account number to confirm: ");
     input2 = s.nextInt();
@@ -211,6 +215,5 @@ public class Main {
     s.close();
     return d.getUsers();
   }
-
 
 }

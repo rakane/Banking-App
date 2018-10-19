@@ -7,6 +7,7 @@
 import java.util.ArrayList;
 
 public class User {
+  
   private String username;
   private String password;
   private ArrayList<BankAccount> accounts = new ArrayList<BankAccount>();
@@ -67,7 +68,7 @@ public class User {
         System.out.println("Checking:\tAccount Number: " + accounts.get(i).getAccountNumber() +
         "\t\tBalance: " + accounts.get(i).getAccountBalance());
       }
-      else{
+      else {
         System.out.println("Savings:\tAccount Number: " + accounts.get(i).getAccountNumber() +
         "\t\tBalance: " + accounts.get(i).getAccountBalance());
       }

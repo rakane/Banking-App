@@ -155,11 +155,10 @@ public class DataBase {
   *   database of users
   *  @param name
   *   name of user to check against db
-  *  @return true if user already exists    
+  *  @return true if user already exists
   **/
   public static boolean alreadyExists(ArrayList<User> db, String name) {
     boolean exists = true;
-
     for(int i = 0; i < db.size(); i++) {
       if(db.get(i).getUserName().equals(name)) {
         exists = false;

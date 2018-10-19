@@ -6,7 +6,7 @@
 
 public class SavingsAccount extends BankAccount{
 
-  private static String type = "Saving";
+  private static String type = "Savings";
   private static double interestRate = 0.2;
 
   /**
